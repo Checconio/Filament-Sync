@@ -1,11 +1,11 @@
-const PRINTERIP = '192.168.1.247'
+const PRINTERIP = '192.168.1.31'
 const USER = 'root'
 const PASSWORD = 'creality_2024'
 
 
 // Enter the slicer you want to sync from 
 // 'orca' or 'creality'
-const SLICER = 'orca'
+const SLICER = 'creality'
 
 /*
 Users logged into the slicer will need to specify their unique user folder id
@@ -23,6 +23,6 @@ CrealityPrint
 
 Not logged in: 'default'
 */
-const USERID = 'default'
+const USERID = '4395383826'
 
 module.exports = {PRINTERIP, USER, PASSWORD, SLICER, USERID}
