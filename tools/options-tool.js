@@ -4,6 +4,7 @@ const path = require('path')
 const dirname = path.join(__dirname, '..', 'data/')
 const optionsFile = dirname + 'material_option.json'
 const {readProfiles} = require('./config')
+const convertToPrinterFormat = require('./jsonhandler.js')
 
 const readOptions = () => {
     let options = JSON.parse(fs.readFileSync(optionsFile))
@@ -71,10 +72,11 @@ const addFilament = (vendor, type, name) => {
 
 const addOptions = () => {
     let customProfiles = readProfiles()
+
     for (item in customProfiles) {
-        let curItem = customProfiles[item]
-        let curItemData = JSON.parse(curItem.filament_notes)
-        addFilament(curItemData.vendor, curItemData.type, curItemData.name)
+        const updatedFilamentEntry = convertToPrinterFormat(customProfiles[item])
+
+        addFilament(updatedFilamentEntry.base.brand, updatedFilamentEntry.base.meterialType, updatedFilamentEntry.base.name)
     }
 }
 

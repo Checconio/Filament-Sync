@@ -78,8 +78,8 @@ const loadCustomProfiles = () => {
             }
             break
         case 'Windows_NT':
-            orcaProfileDir = homeDir + '/AppData/Roaming/OrcaSlicer/user/' + USERID + '/filament/base/'
-            crealityProfileDir = homeDir + '/AppData/Roaming/Creality/Creality Print/6.0/user/' + USERID + '/filament/base/'
+            orcaProfileDir = homeDir + '/AppData/Roaming/OrcaSlicer/user/' + USERID + '/filament/'
+            crealityProfileDir = homeDir + '/AppData/Roaming/Creality/Creality Print/6.0/user/' + USERID + '/filament/'
             if (SLICER == 'orca') {
                 orcaFiles = fs.readdirSync(orcaProfileDir)
                 if (orcaFiles[0] == '.DS_Store') orcaFiles.splice(0, 1)

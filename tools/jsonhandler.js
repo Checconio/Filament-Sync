@@ -10,21 +10,22 @@ const getOSInfo = () => {
 }
 
 const convertSlicerFormat = (preset) => {
-    let presetNotes = preset.filament_notes[0]
-    for (value in preset) {
-        if(Array.isArray(preset[value])) {
-            preset[value] = preset[value][0]
+    let newPreset = JSON.parse(JSON.stringify(preset))
+    let presetNotes = newPreset.filament_notes[0]
+    for (value in newPreset) {
+        if(Array.isArray(newPreset[value])) {
+            newPreset[value] = newPreset[value][0]
 
-            if(Array.isArray(preset[value])) {
-                preset[value] = preset[value][0]
+            if(Array.isArray(newPreset[value])) {
+                newPreset[value] = newPreset[value][0]
             }
         }
         else {
-            preset[value] = preset[value]
+            newPreset[value] = newPreset[value]
         }
     }
-    preset.filament_notes = JSON.parse(presetNotes)
-    return preset
+    newPreset.filament_notes = JSON.parse(presetNotes)
+    return newPreset
 }
 
 const getInherits = (name) => {
@@ -32,15 +33,6 @@ const getInherits = (name) => {
     const crealityProfileFile = homeDir + '/AppData/Roaming/Creality/Creality Print/6.0/system/Creality/filament/' + name + '.json'
 
     let parsedProfile = JSON.parse(fs.readFileSync(crealityProfileFile))
-
-    for (value in parsedProfile) {
-        if(Array.isArray(parsedProfile[value])) {
-            parsedProfile[value] = parsedProfile[value][0]
-        }
-        else {
-            parsedProfile[value] = parsedProfile[value]
-        }
-    }
 
     return parsedProfile;
 }
@@ -53,6 +45,17 @@ const convertToPrinterFormat = (preset) => {
     newPreset = convertSlicerFormat(preset)
     presetNotes = newPreset.filament_notes
     inherits = getInherits(newPreset.inherits)
+
+    for (value in inherits) {
+        if(Array.isArray(inherits[value])) {
+            inherits[value] = inherits[value][0]
+        }
+        else {
+            inherits[value] = inherits[value]
+        }
+    }
+
+
 
     let newObject = {
         "engineVersion": newPreset.version,
