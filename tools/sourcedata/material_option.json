@@ -38,7 +38,9 @@
     "PCTG":"Generic PCTG"
   },
   "eSUN":{
-    "PLA":"PLA-LW\nPLA+\nPLA-Silk\nPLA-Matte\nPLA-Lite"
+    "PLA":"eSUN PLA-LW\neSUN PLA+\neSUN PLA-Silk\neSUN PLA-Matte\neSUN PLA-Lite\neSUN PLA-HS",
+    "PLA-CF":"eSUN PLA-CF",
+    "PETG":"eSUN PETG\neSUN PETG+HS"
   },
   "Polymaker":{
     "PLA":"Panchroma PLA Satin\nPolySonic PLA Pro\nPanchroma PLA Matte\nPolySonic PLA"
