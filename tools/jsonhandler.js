@@ -30,7 +30,7 @@ const convertSlicerFormat = (preset) => {
 
 const getInherits = (name) => {
     const {osType, homeDir} = getOSInfo()
-    const crealityProfileFile = homeDir + '/AppData/Roaming/Creality/Creality Print/6.0/system/Creality/filament/' + name + '.json'
+    const crealityProfileFile = homeDir + '/AppData/Roaming/Creality/Creality Print/7.0/system/Creality/filament/' + name + '.json'
 
     let parsedProfile = JSON.parse(fs.readFileSync(crealityProfileFile))
 
